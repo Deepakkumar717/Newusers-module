@@ -1,0 +1,119 @@
+/* General Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body Styling */
+body {
+  background: linear-gradient(to bottom right, #a066f6, #be89f7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Form Container */
+.form-container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px 25px;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Title */
+.form-container h2 {
+  text-align: center;
+  color: #ffffff;
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+/* Input and Textarea Fields */
+.form-container input,
+.form-container textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 12px;
+  background-color: #f0e8ff;
+  font-size: 14px;
+  color: #333;
+  outline: none;
+}
+
+/* Placeholder Styling */
+.form-container input::placeholder,
+.form-container textarea::placeholder {
+  color: #a19ab5;
+  font-size: 13px;
+}
+
+/* Submit Button */
+.form-container button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 30px;
+  background-color: #ffffff;
+  color: #a066f6;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+  background-color: #f2f2f2;
+}
+
+/* Error Message Styling */
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 480px) {
+  body {
+    padding: 10px;
+    align-items: flex-start;
+  }
+
+  .form-container {
+    padding: 20px 15px;
+    border-radius: 16px;
+  }
+
+  .form-container h2 {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  .form-container input,
+  .form-container textarea {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  .form-container button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .message.error {
+    font-size: 13px;
+  }
+}
