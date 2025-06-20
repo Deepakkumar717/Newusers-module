@@ -43,6 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 
+<?php include 'header.php'; ?>
+
 <div class="container">
   <div class="info-box">
     <div class="info-card"><i class="fas fa-map-marker-alt"></i><h3>Address</h3><p>16/31, S&S Enclave, Kannapiran Colony, Valipalayam, Tirupur – 641601</p></div>
@@ -72,6 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <div class="chat-box"><i class="fas fa-comments"></i><h3>Live Chat</h3><a href="#">Use Live Chat in Sidebar</a></div>
   <div class="chat-box"><i class="fab fa-facebook-messenger"></i><h3>Facebook Chat</h3><a href="https://m.me/sunfacesoftwaresolutions" target="_blank">Message on Facebook</a></div>
 </div>
+<?php include 'footer.php'; ?>
 
 <?php if ($success): ?>
 <script>

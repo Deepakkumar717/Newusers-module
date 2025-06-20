@@ -10,31 +10,57 @@
       font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f8f9fa;
+      background: #fff;
     }
 
     .about-container {
       max-width: 1200px;
-      margin: auto;
+      margin: 0 auto;
       padding: 50px 20px;
     }
 
     h1, h2 {
       text-align: center;
-      color: #101d42;
+      color: #e10000;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+      text-shadow: 0 2px 8px rgba(225,0,0,0.06);
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-top: 0;
+      margin-bottom: 36px;
     }
 
     .about-section {
-      background-color: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background: #fff;
+      padding: 36px 32px;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(225,0,0,0.10);
       margin-bottom: 40px;
+      transition: box-shadow 0.18s, transform 0.18s;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .about-section:hover,
+    .about-section:focus-within {
+      box-shadow: 0 16px 48px rgba(225,0,0,0.18);
+      transform: translateY(-4px) scale(1.025);
     }
 
     .about-section p {
       line-height: 1.8;
       color: #333;
+      font-size: 1.08rem;
+    }
+
+    .about-section strong {
+      color: #e10000;
+      font-weight: 700;
+      font-size: 1.08em;
     }
 
     .team {
@@ -46,11 +72,20 @@
 
     .team-member {
       background: #fff;
-      padding: 20px;
-      border-radius: 12px;
+      padding: 28px 18px 22px 18px;
+      border-radius: 16px;
       text-align: center;
       width: 260px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 24px rgba(225,0,0,0.07);
+      transition: box-shadow 0.18s, transform 0.18s;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .team-member:hover,
+    .team-member:focus-within {
+      box-shadow: 0 8px 36px rgba(225,0,0,0.18);
+      transform: translateY(-4px) scale(1.04);
     }
 
     .team-member img {
@@ -58,11 +93,31 @@
       width: 120px;
       height: 120px;
       object-fit: cover;
+      border: 3px solid #e10000;
+      background: #fff0f0;
+      box-shadow: 0 2px 12px rgba(225,0,0,0.08);
+      margin-bottom: 12px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .team-member:hover img,
+    .team-member:focus-within img {
+      box-shadow: 0 6px 24px rgba(225,0,0,0.18);
+      transform: scale(1.04);
     }
 
     .team-member h4 {
       margin-top: 10px;
-      color: #101d42;
+      color: #e10000;
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: 0.5px;
+    }
+
+    .team-member p {
+      color: #444;
+      font-size: 1rem;
+      margin: 8px 0 0 0;
     }
 
     .cta {
@@ -70,18 +125,60 @@
       margin-top: 50px;
     }
 
-    .cta a {
-      background: #101d42;
-      color: white;
-      padding: 12px 24px;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-      transition: background 0.3s ease;
+    .cta h2 {
+      color: #101d42;
+      margin-bottom: 18px;
     }
 
-    .cta a:hover {
-      background: #00bcd4;
+    .cta a {
+      background: linear-gradient(90deg, #e10000 0%, #ff512f 100%);
+      color: white;
+      padding: 14px 32px;
+      text-decoration: none;
+      border-radius: 24px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      transition: background 0.18s, box-shadow 0.18s, transform 0.12s;
+      box-shadow: 0 4px 16px rgba(225,0,0,0.13);
+      display: inline-block;
+      border: none;
+      outline: none;
+    }
+
+    .cta a:hover,
+    .cta a:focus {
+      background: linear-gradient(90deg, #ff512f 0%, #e10000 100%);
+      color: #fff;
+      transform: scale(1.04);
+      box-shadow: 0 8px 32px rgba(225,0,0,0.18);
+    }
+
+    @media (max-width: 900px) {
+      .about-container {
+        padding: 30px 4vw;
+      }
+      .team {
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .about-container {
+        padding: 10px 0;
+      }
+      .about-section {
+        padding: 18px 6vw;
+      }
+      .team {
+        flex-direction: column;
+        gap: 18px;
+      }
+      .team-member {
+        width: 98vw;
+        max-width: 340px;
+        margin: 0 auto;
+      }
     }
   </style>
 </head>

@@ -1,14 +1,15 @@
 <?php
-$servername = "localhost";
+$host = "crossover.proxy.rlwy.net";
+$port = 32488;
 $username = "root";
-$password = ""; // change if you set root password
-$dbname = "user_data";
-$port = 3307;
+$password = "OHtebhVoTYDpgZgrVwjtJJnBDnAUGScb";
+$database = "railway";
 
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
+// Create connection
+$conn = new mysqli($host, $username, $password, $database, $port);
 
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("❌ Connection failed: " . $conn->connect_error);
 }
 ?>

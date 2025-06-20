@@ -32,7 +32,7 @@ if ($result && $result->num_rows > 0) {
         <div class="plans-grid">
           <?php foreach ($plans as $plan): ?>
             <div class="plan-card touch-effect">
-              <img src="uploads/<?php echo htmlspecialchars($plan['image']) ?>" alt="<?= htmlspecialchars($plan['plan_name']) ?>" class="plan-img"/>
+              <img src="<?= htmlspecialchars($plan['image']) ?>" alt="<?= htmlspecialchars($plan['plan_name']) ?>" class="plan-img"/>
               <div class="plan-info">
                 <div class="plan-name"><?= htmlspecialchars($plan['plan_name']) ?></div>
                 <div class="plan-validity">Validity: <?= htmlspecialchars($plan['validity']) ?></div>

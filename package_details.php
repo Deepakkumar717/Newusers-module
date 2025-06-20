@@ -192,9 +192,11 @@ $plan = $result->fetch_assoc();
   </style>
 </head>
 <body>
+  
+  
 
 <div class="container">
-  <img src="uploads/<?php echo htmlspecialchars($plan['image']); ?>" alt="Plan Image" class="plan-img" />
+  <img src="<?= htmlspecialchars($plan['image']) ?>" alt="Plan Image" class="plan-detail-img" />
   <h1><?php echo htmlspecialchars($plan['plan_name']); ?></h1>
 
   <div class="plan-info">

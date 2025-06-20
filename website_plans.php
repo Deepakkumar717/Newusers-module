@@ -1,15 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "user_data";
-$port = 3307;
-
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
+include 'db_connect.php';
 $sql = "SELECT * FROM plans WHERE category = 'Website'";
 $result = $conn->query($sql);
 ?>
@@ -22,21 +12,258 @@ $result = $conn->query($sql);
   <link rel="stylesheet" href="css/styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* Same styles as before... */
-    .details-link {
-      margin-top: 10px;
-      display: inline-block;
-      padding: 10px 18px;
-      background: #28a745;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: 600;
-    }
+   body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: #fff;
+}
 
-    .details-link:hover {
-      background: #1e7e34;
-    }
+header {
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(225,0,0,0.08);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px 20px;
+}
+
+.logo {
+  height: 50px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  transition: color 0.18s;
+}
+
+.nav-links li a:hover {
+  color: #e10000;
+}
+
+.plans {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.plans h2 {
+  font-size: 2rem;
+  margin-bottom: 36px;
+  color: #e10000;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(225,0,0,0.06);
+}
+
+.plan-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 38px;
+}
+
+.plan-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(225,0,0,0.10);
+  padding: 32px 28px 28px 28px;
+  width: 370px;
+  min-height: 420px;
+  text-align: center;
+  transition: box-shadow 0.18s, transform 0.18s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.plan-card:hover,
+.plan-card:focus-within {
+  box-shadow: 0 16px 48px rgba(225,0,0,0.18);
+  transform: translateY(-8px) scale(1.03);
+}
+
+.plan-icon {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #e10000;
+  background: #fff0f0;
+  box-shadow: 0 2px 12px rgba(225,0,0,0.08);
+  margin-bottom: 18px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.plan-card:hover .plan-icon,
+.plan-card:focus-within .plan-icon {
+  box-shadow: 0 6px 24px rgba(225,0,0,0.18);
+  transform: scale(1.04);
+}
+
+.plan-card h3 {
+  font-size: 1.35rem;
+  margin: 10px 0 8px;
+  color: #e10000;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.plan-card p {
+  margin: 7px 0;
+  font-size: 1.08rem;
+  color: #222;
+  line-height: 1.6;
+}
+
+.plan-card .plan-price {
+  display: inline-block;
+  background: #fff0f0;
+  color: #e10000;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 7px 22px;
+  margin: 0 0 12px 0;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(225,0,0,0.06);
+}
+
+.plan-actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+}
+
+.details-btn,
+.subscribe-btn {
+  flex: 1 1 0;
+  padding: 13px 0;
+  border-radius: 24px;
+  font-size: 1.05rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: 
+    background 0.18s,
+    color 0.18s,
+    box-shadow 0.18s,
+    transform 0.12s;
+  box-shadow: 0 2px 8px rgba(225,0,0,0.08);
+  outline: none;
+  text-align: center;
+  min-width: 0;
+  margin: 0;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.details-btn {
+  background: #fff;
+  color: #e10000;
+  border: 2px solid #e10000;
+  margin-right: 6px;
+}
+
+.details-btn:hover,
+.details-btn:focus {
+  background: #e10000;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(225,0,0,0.13);
+  transform: scale(1.04);
+}
+
+.subscribe-btn {
+  background: linear-gradient(90deg, #e10000 0%, #ff512f 100%);
+  color: #fff;
+  border: none;
+  margin-left: 6px;
+  box-shadow: 0 4px 16px rgba(225,0,0,0.13);
+}
+
+.subscribe-btn:hover,
+.subscribe-btn:focus {
+  background: linear-gradient(90deg, #ff512f 0%, #e10000 100%);
+  color: #fff;
+  transform: scale(1.04);
+  box-shadow: 0 8px 32px rgba(225,0,0,0.18);
+}
+
+footer {
+  background: #101d42;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
+  margin-top: 60px;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .plan-card {
+    width: 98vw;
+    min-width: 0;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .plan-buttons {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .plans {
+    padding: 10px 0;
+  }
+  .plan-card {
+    padding: 18px 6vw 18px 6vw;
+    min-height: 340px;
+  }
+  .plan-icon {
+    width: 80px;
+    height: 80px;
+  }
+  .details-btn, .subscribe-btn {
+    padding: 10px 0;
+    font-size: 0.98rem;
+  }
+  .plan-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .details-btn,
+  .subscribe-btn {
+    width: 100%;
+    margin: 0;
+  }
+}
   </style>
 </head>
 <body>
@@ -63,7 +290,7 @@ $result = $conn->query($sql);
     <?php if ($result->num_rows > 0): ?>
       <?php while($row = $result->fetch_assoc()): ?>
         <div class="plan-card">
-          <img src="uploads/<?php echo htmlspecialchars($row['image']); ?>" alt="Plan Image" class="plan-icon" />
+          <img src="<?php echo htmlspecialchars($row['image']); ?>" alt="Plan Image" class="plan-icon" />
           <h3><?php echo htmlspecialchars($row['plan_name']); ?></h3>
           <p><strong>Price:</strong> ₹<?php echo htmlspecialchars($row['price']); ?></p>
           <p><strong>Validity:</strong> <?php echo htmlspecialchars($row['validity']); ?></p>

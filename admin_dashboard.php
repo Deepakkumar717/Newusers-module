@@ -1,5 +1,6 @@
 <?php
 include 'db_connect.php';
+include 'cloudinary_config.php';
 
 // Handle Delete
 if (isset($_GET['delete_id'])) {
@@ -43,9 +44,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $image_to_save = '';
 
     if (!empty($image)) {
-        $image_to_save = time() . '_' . basename($image);
-        $image_path = 'uploads/' . $image_to_save;
-        move_uploaded_file($_FILES['image']['tmp_name'], $image_path);
+        $cloud_name = CLOUDINARY_CLOUD_NAME;
+        $api_key = CLOUDINARY_API_KEY;
+        $api_secret = CLOUDINARY_API_SECRET;
+
+        $file = $_FILES['image']['tmp_name'];
+        $timestamp = time();
+
+        // Parameters to sign
+        $params_to_sign = [
+            'timestamp' => $timestamp,
+        ];
+        // Create the signature string
+        $signature_string = http_build_query($params_to_sign) . $api_secret;
+        $signature = sha1("timestamp=$timestamp$api_secret");
+
+        $ch = curl_init();
+        $data = [
+            'file' => new CURLFile($file),
+            'api_key' => $api_key,
+            'timestamp' => $timestamp,
+            'signature' => $signature,
+        ];
+        curl_setopt($ch, CURLOPT_URL, "https://api.cloudinary.com/v1_1/$cloud_name/image/upload");
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        $responseData = json_decode($response, true);
+        if (isset($responseData['secure_url'])) {
+            $image_to_save = $responseData['secure_url'];
+        } else {
+            $image_to_save = '';
+        }
     }
 
     if (isset($_POST['plan_id'])) {
@@ -152,7 +186,7 @@ $result = $conn->query("SELECT * FROM plans ORDER BY id DESC");
             <td><?= htmlspecialchars($row['category']) ?></td>
             <td>
                 <?php if ($row['image']): ?>
-                    <img src="uploads/<?= htmlspecialchars($row['image']) ?>" alt="Plan Image">
+                    <img src="<?= htmlspecialchars($row['image']) ?>" alt="Plan Image">
                 <?php else: ?>
                     <span style="color:#aaa;">No Image</span>
                 <?php endif; ?>

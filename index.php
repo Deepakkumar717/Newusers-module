@@ -162,6 +162,14 @@
     <p>&copy; 2025 Your Company. All Rights Reserved.</p>
   </footer>
 
+  <!-- Signup Modal -->
+<div id="signupModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(16,29,66,0.25); z-index:2000; align-items:center; justify-content:center;">
+  <div style="background:#fff; border-radius:16px; box-shadow:0 8px 32px rgba(16,29,66,0.18); width:95vw; max-width:400px; padding:0; position:relative; display:flex; flex-direction:column; align-items:center;">
+    <button onclick="closeSignupModal()" style="position:absolute; top:10px; right:18px; background:none; border:none; font-size:2rem; color:#e10000; cursor:pointer; z-index:10;">&times;</button>
+    <iframe id="signupFrame" src="signup.php" style="border:none; width:100%; height:540px; border-radius:16px;"></iframe>
+  </div>
+</div>
+
   <script>
     // Slider functionality
     const slides = document.getElementById('slides');
@@ -208,6 +216,20 @@
     // Sidebar toggle
     function toggleSidebar() {
       document.getElementById('sidebar').classList.toggle('active');
+    }
+
+    // Open signup modal when Account is clicked
+    document.querySelectorAll('a[href="signup.php"]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('signupModal').style.display = 'flex';
+        document.getElementById('signupFrame').src = 'signup.php';
+      });
+    });
+
+    function closeSignupModal() {
+      document.getElementById('signupModal').style.display = 'none';
+      document.getElementById('signupFrame').src = '';
     }
   </script>
 
