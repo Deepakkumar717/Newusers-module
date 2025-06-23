@@ -25,5 +25,5 @@
       }
     }
   </style>
-  <p>&copy; <?php echo date('Y'); ?> Your Company. All Rights Reserved.</p>
+  <p>&copy; <?php echo date('Y'); ?> SunFaceTechnologies. All Rights Reserved.</p>
 </footer>

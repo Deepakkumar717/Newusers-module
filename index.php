@@ -159,7 +159,7 @@
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Your Company. All Rights Reserved.</p>
+    <p>&copy; 2025 SunFace Technologies. All Rights Reserved.</p>
   </footer>
 
   <!-- Signup Modal -->

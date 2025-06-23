@@ -13,7 +13,7 @@ $result = $conn->query($sql);
   <link rel="stylesheet" href="css/styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
+  body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   background: #fff;
@@ -296,7 +296,8 @@ footer {
           <p><strong>Price:</strong> ₹<?php echo htmlspecialchars($row['price']); ?></p>
           <p><strong>Validity:</strong> <?php echo htmlspecialchars($row['validity']); ?></p>
 
-          <a href="package_details.php?plan_id=<?php echo $row['id']; ?>" class="details-btn">Package Details</a>
+    
+<a href="package_details.php?plan_id=<?php echo $row['id']; ?>" class="details-btn">Package Details</a>
           <a href="subscribe.php?plan_id=<?php echo $row['id']; ?>" class="subscribe-btn">Subscribe</a>
         </div>
       <?php endwhile; ?>
